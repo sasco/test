@@ -1,0 +1,5 @@
+<%= @book.errors.full_messages -%>
+<%= form_for @book, url: { action: "create" } do |f| %>
+  <%= f.text_field :name %>
+  <%= submit_tag 'Create' %>
+<% end %>
