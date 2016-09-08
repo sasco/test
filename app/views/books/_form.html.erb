@@ -1,0 +1,7 @@
+<%= @book.errors.full_messages -%>
+<%= form_for @book, url: { action: action } do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :author %>
+
+  <%= submit_tag action.capitalize %>
+<% end %>

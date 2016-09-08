@@ -1,0 +1,8 @@
+<div> Name:
+<%= @book.name -%>
+  </div>
+<div> Author:
+  <%= @book.author -%>
+</div>
+<%= link_to "Back", books_path %>
+<%= link_to "Edit", edit_book_path(@book) %>
