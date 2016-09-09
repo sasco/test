@@ -1,7 +1,10 @@
-<%= @book.errors.full_messages -%>
+<%= @book.errors.full_messages.to_sentence-%>
+<h1>Create a new book</h1>
 <%= form_for @book, url: { action: action } do |f| %>
   Name: <%= f.text_field :name %>
-  Author:<%= f.text_field :author %>
+  <%= f.fields_for @book.author  do |author| -%>
+    Author:<%= author.text_field :name %>
+  <% end -%>
   Year: <%= f.date_field :year %>
   ISBN: <%= f.number_field :isbn %>
 

@@ -15,6 +15,7 @@ class BooksController <  ApplicationController
   def update
     @book = Book.find(params[:id])
     success = @book.update(book_params)
+    @book.author.update(author_params)
     if !success
       render :edit and return
     end
@@ -29,11 +30,12 @@ class BooksController <  ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = Book.new(:author=>Author.new)
   end
 
   def create
     @book = Book.new(book_params)
+    @book.build_author(author_params)
     success = @book.save
     if !success
       render :new and return
@@ -41,10 +43,14 @@ class BooksController <  ApplicationController
     redirect_to books_path
   end
 
+  def author_params
+    params.require(:book).permit(author: [:name])[:author]
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:name, :author, :year, :isbn)
+    params.require(:book).permit(:name, :year, :isbn)
   end
 
 end

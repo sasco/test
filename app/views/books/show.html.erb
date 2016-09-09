@@ -2,7 +2,7 @@
 <%= @book.name -%>
   </div>
 <div> Author:
-  <%= @book.author -%>
+  <%= @book.author.name -%>
 </div>
 <div> Year:
   <%= @book.year -%>
@@ -10,9 +10,9 @@
 <div> ISBN:
   <%= @book.isbn -%>
 </div>
+<br>
 <%= link_to "Back", books_path %>
 <%= link_to "Edit", edit_book_path(@book) %>
-
 <%= form_for @book, method: :delete  do |f| %>
     <%= submit_tag "Delete" %>
 <% end %>

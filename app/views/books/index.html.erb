@@ -1,3 +1,4 @@
+<h1>List of all Books</h1>
 <% @books.each do |book| -%>
-  <%= link_to book.name, book_path(book) -%></div>
+  <%= link_to book.name, book_path(book) -%></div><br>
 <% end -%>
