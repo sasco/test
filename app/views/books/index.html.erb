@@ -1,4 +1,8 @@
+<%= form_tag destroy_user_session_path, method: :delete do -%>
+<%= submit_tag "Sign Out" -%>
+<% end %>
 <h1>List of all Books</h1>
 <% @books.each do |book| -%>
   <%= link_to book.name, book_path(book) -%></div><br>
 <% end -%>
+<%= link_to "Create", new_book_path -%></div><br>

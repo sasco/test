@@ -1,7 +1,9 @@
 class BooksController <  ApplicationController
 
+  before_action :authenticate_user!
+
   def index
-    @books=Book.all
+    @books=current_user.books
   end
 
   def show
@@ -34,12 +36,9 @@ class BooksController <  ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.new(book_params.merge({user: current_user}))
     @book.build_author(author_params)
-    success = @book.save
-    if !success
-      render :new and return
-    end
+    render :new and return unless @book.save
     redirect_to books_path
   end
 
