@@ -1,7 +1,8 @@
 <div> Name:
 <%= @book.name -%>
   </div>
-<div> Author:
+<div>
+  <%= image_tag 'person.png', {class: 'person-icon'}-%>
   <%= @book.author.name -%>
 </div>
 <div> Year:
