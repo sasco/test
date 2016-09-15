@@ -14,5 +14,9 @@
  *= require_self
  */
 
+.person-icon {
+  width: 30px;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
