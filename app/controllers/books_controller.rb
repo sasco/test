@@ -3,6 +3,7 @@ class BooksController <  ApplicationController
   before_action :authenticate_user!
 
   def index
+    render :new and return unless logged_in?
     @books=current_user.books
   end
 
@@ -28,7 +29,6 @@ class BooksController <  ApplicationController
   @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
-
   end
 
   def new
